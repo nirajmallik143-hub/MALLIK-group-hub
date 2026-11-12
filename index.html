@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MallikGroupHub - Niraj Mallik @ Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>body{font-family:system-ui,sans-serif} .mono{font-family:monospace}</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+<!-- HEADER -->
+<header class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-500 flex items-center justify-center font-bold">NM</div>
+<div><h1 class="font-bold">Niraj Mallik @ Hub <span class="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full">v3.0 MEGA</span></h1>
+<p class="text-xs text-slate-400">MIT License • Copyright © 2026 Niraj Mallik • MallikGroupHub</p></div>
+</div>
+<a href="https://github.com/nirajmallik143-hub/EcoThread" target="_blank" class="text-xs bg-emerald-600 px-3 py-2 rounded-lg font-bold">⭐ Sponsor / GitHub</a>
+</div>
+</header>
+
+<!-- TABS -->
+<nav class="bg-slate-800 border-b border-slate-700 sticky top-[68px] z-40">
+<div class="max-w-6xl mx-auto flex overflow-x-auto">
+<button onclick="showTab('shiva')" id="t-shiva" class="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-emerald-500 text-emerald-400 whitespace-nowrap">🇳🇵 Shivasatakshi AI</button>
+<button onclick="showTab('mind')" id="t-mind" class="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap">🧠 Mind Live</button>
+<button onclick="showTab('life')" id="t-life" class="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap">⚛ LiveLife OS</button>
+<button onclick="showTab('eco')" id="t-eco" class="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap">🌱 EcoThread</button>
+</div>
+</nav>
+
+<main class="max-w-6xl mx-auto w-full p-4 flex-1">
+
+<!-- TAB 1: SHIVASATAKSHI -->
+<section id="c-shiva">
+<div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+<div><h2 class="font-bold text-emerald-400">Sikshya AI Tutor</h2><p class="text-xs text-slate-400">Nepal CDC curriculum • EN / NP / HI</p></div>
+<select id="langSelect" class="bg-slate-700 rounded px-2 py-1 text-sm"><option>English</option><option>नेपाली</option><option>हिन्दी</option></select>
+</div>
+<div id="chatWindow" class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mt-4 space-y-3 min-h-[280px] max-h-[50vh] overflow-y-auto">
+<div class="bg-slate-700/60 p-3 rounded-lg max-w-[85%] text-sm"><p class="font-bold text-emerald-300">AI Tutor</p><p>Namaste Shivasatakshi students! Ask about maths, science, or Python.</p></div>
+</div>
+<div class="flex gap-2 mt-3"><input id="userInput" placeholder="Type question..." class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-sm outline-none focus:border-emerald-500"><button onclick="sendChat()" class="bg-emerald-600 px-5 rounded-lg font-bold text-sm">Send</button></div>
+<div class="flex gap-2 text-xs text-slate-400 mt-2"><button onclick="insertText('नमस्ते')" class="underline">नमस्ते</button><button onclick="insertText('कक्षा १०')" class="underline">कक्षा १०</button><button onclick="insertText('Python Code')" class="underline">Python Code</button></div>
+<div class="grid md:grid-cols-2 gap-4 mt-4">
+<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><h3 class="font-bold">HTML & PWA</h3><button onclick="loadDemo('html')" class="text-xs bg-slate-700 px-3 py-1.5 rounded text-emerald-400 mt-2">Load Template</button></div>
+<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><h3 class="font-bold">Python Automation</h3><button onclick="loadDemo('python')" class="text-xs bg-slate-700 px-3 py-1.5 rounded text-emerald-400 mt-2">Load Template</button></div>
+</div>
+<pre id="codeDisplay" class="bg-black/40 border border-slate-700 rounded-xl p-4 mt-4 text-xs text-emerald-400 overflow-x-auto">Select a module above...</pre>
+<div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mt-4"><h3 class="font-bold text-emerald-400">Weekly Exam - Q1</h3><p class="text-sm mt-2">Which language is used for lightweight Android automation?</p>
+<label class="block bg-slate-700/50 p-3 rounded-lg mt-2 text-sm"><input type="radio" name="q1" value="A"> A) Python</label>
+<label class="block bg-slate-700/50 p-3 rounded-lg mt-2 text-sm"><input type="radio" name="q1" value="B"> B) HTML only</label>
+<label class="block bg-slate-700/50 p-3 rounded-lg mt-2 text-sm"><input type="radio" name="q1" value="C"> C) SQL</label>
+<button onclick="submitExam()" class="w-full bg-emerald-600 py-3 rounded-lg font-bold text-sm mt-3">Submit Test</button>
+<p id="examResult" class="hidden text-center text-emerald-300 font-bold mt-2">✅ Submitted! Score: 100% | Badge Awarded</p></div>
+</section>
+
+<!-- TAB 2: MIND LIVE -->
+<section id="c-mind" class="hidden">
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+<div class="flex justify-between"><h2 class="text-cyan-400 font-bold text-sm">⚡ LIVE COGNITIVE STREAM</h2><span class="text-xs mono text-slate-400">Hz: 42.8 | Sync: 99.4%</span></div>
+<canvas id="mindCanvas" class="w-full h-48 bg-slate-950 rounded-xl mt-4 border border-slate-800"></canvas>
+<p id="currentFocusTag" class="text-xs mono bg-cyan-950 text-cyan-300 px-3 py-1 rounded inline-block mt-3 border border-cyan-800">FOCUS: Architecture & System Optimization</p>
+<div class="flex gap-2 mt-3"><input id="thoughtInput" placeholder="Inject live thought..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs"><button onclick="injectThought()" class="bg-slate-800 px-5 rounded-xl text-xs text-cyan-400 border border-slate-700">Inject</button></div>
+</div>
+<div class="grid md:grid-cols-2 gap-4 mt-4">
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><h3 class="text-purple-400 font-bold text-sm mb-3">MIND STATE</h3>
+<p class="text-xs flex justify-between">Focus <span id="valFocus" class="text-cyan-400">88%</span></p><div class="bg-slate-950 h-2 rounded-full mt-1 mb-3"><div id="barFocus" class="bg-cyan-500 h-full w-[88%] rounded-full"></div></div>
+<p class="text-xs flex justify-between">Creativity <span id="valCreativity" class="text-purple-400">92%</span></p><div class="bg-slate-950 h-2 rounded-full mt-1 mb-3"><div id="barCreativity" class="bg-purple-500 h-full w-[92%] rounded-full"></div></div>
+<p class="text-xs flex justify-between">Load <span id="valLoad" class="text-amber-400">64%</span></p><div class="bg-slate-950 h-2 rounded-full mt-1 mb-3"><div id="barLoad" class="bg-amber-500 h-full w-[64%] rounded-full"></div></div>
+<p class="text-xs flex justify-between">Energy <span id="valEnergy2" class="text-emerald-400">79%</span></p><div class="bg-slate-950 h-2 rounded-full mt-1"><div id="barEnergy2" class="bg-emerald-500 h-full w-[79%] rounded-full"></div></div>
+</div>
+<div class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><h3 class="text-sm font-bold mb-3">Active Neural Clusters</h3><div class="flex flex-wrap gap-2 text-xs"><span class="bg-cyan-950 text-cyan-300 px-3 py-1 rounded-lg border border-cyan-800">#SoftwareArchitecture</span><span class="bg-purple-950 text-purple-300 px-3 py-1 rounded-lg border border-purple-800">#MallikGroupHub</span><span class="bg-emerald-950 text-emerald-300 px-3 py-1 rounded-lg border border-emerald-800">#MITLicense2026</span><span class="bg-amber-950 text-amber-300 px-3 py-1 rounded-lg border border-amber-800">#CodeOptimization</span></div><button onclick="toggleEngine()" id="toggleEngineBtn" class="mt-6 w-full bg-cyan-600 text-black font-bold py-2 rounded-lg text-xs">Pause Stream</button></div>
+</div>
+<div id="thoughtLog" class="mono text-xs bg-slate-950 border border-slate-800 rounded-xl p-3 mt-4 space-y-2 max-h-40 overflow-y-auto"><div class="text-slate-500">[System] NIRAJ MALLIK @ HUB - Mind Live Daemon Running...</div></div>
+</section>
+
+<!-- TAB 3: LIVELIFE OS -->
+<section id="c-life" class="hidden">
+<div class="bg-white text-slate-800 rounded-2xl p-6">
+<h2 class="text-2xl font-black">Quantum Life Superposition Engine</h2><p class="text-sm text-slate-600 mt-1">Adjust parameters and collapse into your optimal reality.</p>
+<div class="grid md:grid-cols-4 gap-4 mt-6">
+<div><label class="text-xs font-bold">Biological Energy <span id="valEnergy" class="text-indigo-600">75%</span></label><input id="inputEnergy" type="range" min="20" max="100" value="75" class="w-full"></div>
+<div><label class="text-xs font-bold">Cognitive Capacity <span id="valFocus2" class="text-cyan-600">80%</span></label><input id="inputFocus" type="range" min="20" max="100" value="80" class="w-full"></div>
+<div><label class="text-xs font-bold">Time Budget <span id="valTime" class="text-emerald-600">14.0 hrs</span></label><input id="inputTime" type="range" min="6" max="18" step="0.5" value="14" class="w-full"></div>
+<div><label class="text-xs font-bold">Optimization Target</label><select id="inputPriority" class="w-full text-xs p-2 bg-slate-50 border rounded-lg"><option value="balanced">Balanced</option><option value="longevity">Longevity</option><option value="efficiency">Efficiency</option><option value="joy">Joy</option></select></div>
+</div>
+<button id="btnCollapse" class="w-full mt-6 py-3.5 bg-gradient-to-r from-indigo-600 via-cyan-600 to-indigo-700 text-white font-bold rounded-xl text-sm">⚡ COLLAPSE QUANTUM WAVEFUNCTION</button>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 text-center">
+<div class="border p-3 rounded-xl"><p class="text-xs text-slate-500">Efficiency</p><p id="kpiEfficiency" class="text-xl font-black">+34.2%</p></div>
+<div class="border p-3 rounded-xl"><p class="text-xs text-slate-500">Longevity</p><p id="kpiLongevity" class="text-xl font-black">96.8</p></div>
+<div class="border p-3 rounded-xl"><p class="text-xs text-slate-500">Joy</p><p id="kpiJoy" class="text-xl font-black">92/100</p></div>
+<div class="border p-3 rounded-xl"><p class="text-xs text-slate-500">Time Saved</p><p id="kpiTimeSaved" class="text-xl font-black">2.4 hrs</p></div>
+</div>
+<div class="grid md:grid-cols-2 gap-4 mt-4"><div class="border rounded-xl p-3"><canvas id="radarChart"></canvas></div><div class="border rounded-xl p-3"><canvas id="lineChart"></canvas></div></div>
+<div id="scheduleTimeline" class="mt-4 space-y-2"></div>
+</div>
+</section>
+
+<!-- TAB 4: ECOTHREAD -->
+<section id="c-eco" class="hidden">
+<div class="bg-slate-900 border border-emerald-800 rounded-2xl p-6 text-center">
+<h2 class="text-2xl font-black text-emerald-400">🌱 EcoThread</h2><p class="text-sm text-slate-400 mt-1">Carbon-Aware Code Optimizer — Reduce footprint, one line at a time.</p>
+<textarea id="ecoInput" placeholder="Paste your Python code here...&#10;Example: for i in range(1000): print(i)&#10;for i in range(1000): print(i)" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-4 mt-4 text-xs mono h-32 text-emerald-300"></textarea>
+<button onclick="runEco()" class="w-full bg-emerald-600 py-3 rounded-xl font-bold mt-3">Analyze CO2 Impact →</button>
+<div id="ecoResult" class="hidden mt-4 text-left bg-slate-950 border border-emerald-800 rounded-xl p-4 text-sm"></div>
+<p class="text-xs text-slate-500 mt-4">Core is MIT • Pro: Team Dashboard, PDF Reports, VS Code Extension</p>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-slate-900 border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+<p>© 2026 Niraj Mallik @ Hub • MallikGroupHub • All Rights Reserved</p><p class="text-[10px]">MIT License — EcoThread Core / Shivasatakshi AI / Mind Live / LiveLife OS</p>
+</footer>
+
+<script>
+// TABS
+function showTab(t){['shiva','mind','life','eco'].forEach(x=>{document.getElementById('c-'+x).classList.add('hidden');document.getElementById('t-'+x).className="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap";});document.getElementById('c-'+t).classList.remove('hidden');document.getElementById('t-'+t).className="flex-1 py-3 px-3 text-sm font-bold border-b-2 border-emerald-500 text-emerald-400 whitespace-nowrap";}
+
+// SHIVA
+function insertText(t){let i=document.getElementById('userInput');i.value+=t+" ";i.focus();}
+function sendChat(){let inp=document.getElementById('userInput');let win=document.getElementById('chatWindow');if(!inp.value.trim())return;let q=inp.value;let u=document.createElement('div');u.className="bg-emerald-900/50 p-3 rounded-lg max-w-[85%] ml-auto text-sm text-right";u.innerHTML="<b>You</b><p>"+q+"</p>";win.appendChild(u);inp.value='';setTimeout(()=>{let a=document.createElement('div');a.className="bg-slate-700/60 p-3 rounded-lg max-w-[85%] text-sm";let ans="Great question about '"+q+"'. Let's solve step by step: 1) Understand the problem 2) Break into small parts 3) Practice daily. In Shivasatakshi standard, consistency wins.";if(q.toLowerCase().includes('python')) ans="Python: Start with print(), variables, if/else. Example: print('Hello Shivasatakshi') — then try loops and functions. Practice 20 mins daily.";if(q.toLowerCase().includes('math')||q.toLowerCase().includes('गणित')) ans="Maths: Formula first, example second. Write formula, put values, solve step by step. Don't skip steps.";a.innerHTML="<b class='text-emerald-300'>AI Tutor</b><p>"+ans+"</p>";win.appendChild(a);win.scrollTop=win.scrollHeight;},500);}
+function loadDemo(type){let d=document.getElementById('codeDisplay');if(type==='html')d.innerText="<!DOCTYPE html>\n<html>\n<head><title>Shivasatakshi PWA</title></head>\n<body>\n  <h1>Hello Shivasatakshi Students!</h1>\n</body>\n</html>";else d.innerText="def shivasatakshi_student_score(marks):\n    grade='A+' if marks>=80 else 'B'\n    return f'Student Grade: {grade}'\n\nprint(shivasatakshi_student_score(88))";}
+function submitExam(){document.getElementById('examResult').classList.remove('hidden');}
+
+// MIND LIVE
+let mindCanvas=document.getElementById('mindCanvas');let mctx=mindCanvas.getContext('2d');let isEngineRunning=true;let animId;let parts=[];
+function resizeMind(){mindCanvas.width=mindCanvas.parentElement.clientWidth;mindCanvas.height=192;}resizeMind();
+for(let i=0;i<50;i++)parts.push({x:Math.random()*400,y:Math.random()*180,r:Math.random()*2+1,c:Math.random()>0.5?'#06b6d4':'#a855f7',sx:(Math.random()-0.5)*1.5,sy:(Math.random()-0.5)*1.5});
+function drawMind(){if(!isEngineRunning)return;mctx.clearRect(0,0,mindCanvas.width,mindCanvas.height);parts.forEach(p=>{p.x+=p.sx;p.y+=p.sy;if(p.x<0||p.x>mindCanvas.width)p.sx*=-1;if(p.y<0||p.y>mindCanvas.height)p.sy*=-1;mctx.fillStyle=p.c;mctx.beginPath();mctx.arc(p.x,p.y,p.r,0,Math.PI*2);mctx.fill();});animId=requestAnimationFrame(drawMind);}drawMind();
+function injectThought(){let inp=document.getElementById('thoughtInput');let v=inp.value.trim();if(!v)return;document.getElementById('currentFocusTag').innerText="FOCUS: "+v;let log=document.getElementById('thoughtLog');let d=document.createElement('div');d.className="text-purple-400";d.innerText="["+new Date().toLocaleTimeString()+"] INJECTED: "+v;log.prepend(d);inp.value='';updateMetrics();}
+function updateMetrics(){let f=80+Math.floor(Math.random()*18),c=85+Math.floor(Math.random()*14),l=50+Math.floor(Math.random()*30),e=70+Math.floor(Math.random()*25);document.getElementById('valFocus').innerText=f+'%';document.getElementById('barFocus').style.width=f+'%';document.getElementById('valCreativity').innerText=c+'%';document.getElementById('barCreativity').style.width=c+'%';document.getElementById('valLoad').innerText=l+'%';document.getElementById('barLoad').style.width=l+'%';document.getElementById('valEnergy2').innerText=e+'%';document.getElementById('barEnergy2').style.width=e+'%';}
+function toggleEngine(){isEngineRunning=!isEngineRunning;let b=document.getElementById('toggleEngineBtn');b.innerText=isEngineRunning?"Pause Stream":"Resume Stream";if(isEngineRunning)drawMind();else cancelAnimationFrame(animId);}
+setInterval(()=>{if(isEngineRunning)updateMetrics();},3500);
+
+// LIVELIFE
+let lifeState={energy:75,focus:80,time:14,priority:'balanced'};
+document.getElementById('inputEnergy').addEventListener('input',e=>{lifeState.energy=+e.target.value;document.getElementById('valEnergy').innerText=lifeState.energy+'%';});
+document.getElementById('inputFocus').addEventListener('input',e=>{lifeState.focus=+e.target.value;document.getElementById('valFocus2').innerText=lifeState.focus+'%';});
+document.getElementById('inputTime').addEventListener('input',e=>{lifeState.time=+e.target.value;document.getElementById('valTime').innerText=lifeState.time.toFixed(1)+' hrs';});
+document.getElementById('inputPriority').addEventListener('change',e=>{lifeState.priority=e.target.value;});
+let radar=new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:['Longevity','Productivity','Serotonin','Cognitive','Wealth','Recovery'],datasets:[{label:'Baseline',data:[60,55,65,50,60,55],backgroundColor:'rgba(99,102,241,0.15)',borderColor:'#6366f1'},{label:'Collapsed',data:[95,90,92,88,94,96],backgroundColor:'rgba(6,182,212,0.25)',borderColor:'#06b6d4'}]},options:{responsive:true}});
+let line=new Chart(document.getElementById('lineChart'),{type:'line',data:{labels:['06:00','09:00','12:00','15:00','18:00','21:00'],datasets:[{label:'Linear',data:[50,80,65,40,30,20],borderColor:'#94a3b8',borderDash:[4,4]},{label:'Quantum Optimized',data:[75,95,88,92,85,70],borderColor:'#6366f1',backgroundColor:'rgba(99,102,241,0.1)',fill:true}]},options:{responsive:true}});
+function renderSchedule(){let cont=document.getElementById('scheduleTimeline');let maps={balanced:[['06:30','Sunlight & Hydration','LONGEVITY'],['08:00','Deep Work Block','PRODUCTIVITY'],['12:30','Fuel & Micro-Rest','WELL-BEING'],['15:00','Sync & Market','WEALTH'],['21:30','Melatonin Lock','RECOVERY']],longevity:[['06:00','Zone 2 Cardio','LONGEVITY'],['09:00','Cognitive Sprint','PRODUCTIVITY']],efficiency:[['05:30','Async Dispatch','PRODUCTIVITY'],['07:30','Hyper-Focus Code','WEALTH']],joy:[['07:30','Mindfulness Flow','WELL-BEING'],['10:00','Creative Exploration','CREATIVITY']]};let items=maps[lifeState.priority]||maps.balanced;cont.innerHTML=items.map(i=>`<div class='bg-white text-slate-800 p-3 rounded-xl border flex justify-between text-xs'><span class='font-mono font-bold'>${i[0]}</span><b>${i[1]}</b><span class='bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded'>${i[2]}</span></div>`).join('');}renderSchedule();
+document.getElementById('btnCollapse').addEventListener('click',()=>{let eff=(lifeState.energy*0.2+lifeState.focus*0.25).toFixed(1);document.getElementById('kpiEfficiency').innerText='+'+eff+'%';document.getElementById('kpiLongevity').innerText=(lifeState.energy*0.7+30).toFixed(1);document.getElementById('kpiJoy').innerText=Math.min(99,Math.floor(lifeState.focus*0.5+lifeState.energy*0.4+20))+'/100';document.getElementById('kpiTimeSaved').innerText=(lifeState.time*0.18).toFixed(1)+' hrs';renderSchedule();alert('Wavefunction Collapsed! Your optimal day is ready.');});
+
+// ECOTHREAD
+function runEco(){let code=document.getElementById('ecoInput').value||"print('hello')";let lines=code.split('\n').length;let dup=0;let seen={};code.split('\n').forEach(l=>{let t=l.trim();if(t&&seen[t])dup++;seen[t]=1;});let co2=(lines*0.12+dup*0.8).toFixed(2);let saved=dup>0?Math.min(60,dup*15):8;document.getElementById('ecoResult').classList.remove('hidden');document.getElementById('ecoResult').innerHTML=`<p>📄 Lines: <b>${lines}</b> | 🔁 Duplicates: <b>${dup}</b></p><p class='mt-2'>☁️ CO2 Impact: <b class='text-amber-300'>${co2}g per 1000 runs</b></p><p>💚 If you refactor: Save <b class='text-emerald-300'>${saved}% CO2</b></p><p class='text-xs text-slate-400 mt-2'>Suggestion: ${dup>0?'Remove duplicate lines, merge loops with RefactorEngine.':'Code is clean! Keep it green.'}</p>`;}
+</script>
+</body>
+</html>
